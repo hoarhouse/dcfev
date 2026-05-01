@@ -1,256 +1,768 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Events | Domus Communis Foundation</title>
-  <link rel="stylesheet" href="/v3/css/styles.css">
-  <style>
-    .events-hero {
-      background: #0a0f1e;
-      color: #ffffff;
-      padding: 5rem 2rem 4rem;
-      text-align: center;
-    }
-    .events-hero .eyebrow {
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #0071e3;
-      margin-bottom: 1rem;
-    }
-    .events-hero h1 {
-      font-size: clamp(2rem, 5vw, 3.25rem);
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 0.75rem;
-      line-height: 1.15;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .events-hero .series-subtitle {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.6);
-      font-style: italic;
-      margin-bottom: 0.5rem;
-    }
-    .events-hero .series-desc {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.7);
-      max-width: 600px;
-      margin: 1rem auto 0;
-      line-height: 1.7;
-    }
-    .events-listing {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-    }
-    .events-listing h2 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #86868b;
-      margin-bottom: 2rem;
-    }
-    .event-card {
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-      margin-bottom: 1.5rem;
-      overflow: hidden;
-      display: flex;
-      text-decoration: none;
-      color: inherit;
-      transition: box-shadow 0.25s ease, transform 0.25s ease;
-      border: 1px solid rgba(0,0,0,0.06);
-    }
-    .event-card:hover {
-      box-shadow: 0 8px 32px rgba(0,0,0,0.13);
-      transform: translateY(-2px);
-    }
-    .event-card-date {
-      background: #0a0f1e;
-      color: #ffffff;
-      min-width: 110px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem 1rem;
-      flex-shrink: 0;
-    }
-    .event-card-date .month {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #0071e3;
-      margin-bottom: 0.25rem;
-    }
-    .event-card-date .day {
-      font-size: 2.75rem;
-      font-weight: 800;
-      line-height: 1;
-      margin-bottom: 0.25rem;
-    }
-    .event-card-date .year {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.5);
-      font-weight: 500;
-    }
-    .event-card-body {
-      padding: 1.75rem 2rem;
-      flex: 1;
-    }
-    .event-card-part {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #0071e3;
-      margin-bottom: 0.5rem;
-    }
-    .event-card-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #1d1d1f;
-      margin-bottom: 0.35rem;
-      line-height: 1.3;
-    }
-    .event-card-subtitle {
-      font-size: 0.9rem;
-      color: #86868b;
-      font-style: italic;
-      margin-bottom: 0.75rem;
-    }
-    .event-card-desc {
-      font-size: 0.9rem;
-      color: #3d3d3f;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-    .event-card-meta {
-      display: flex;
-      gap: 1.25rem;
-      flex-wrap: wrap;
-      font-size: 0.825rem;
-      color: #86868b;
-      align-items: center;
-    }
-    .event-card-meta span {
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-    .event-card-meta svg {
-      width: 14px;
-      height: 14px;
-      flex-shrink: 0;
-    }
-    .event-card-arrow {
-      display: flex;
-      align-items: center;
-      padding: 0 1.5rem;
-      color: #0071e3;
-      font-size: 1.5rem;
-      flex-shrink: 0;
-    }
-    .series-note {
-      background: #f0f4ff;
-      border: 1px solid #dce4f5;
-      border-radius: 12px;
-      padding: 1.25rem 1.5rem;
-      margin-top: 2.5rem;
-      font-size: 0.875rem;
-      color: #3d3d3f;
-      line-height: 1.6;
-    }
-    .series-note strong { color: #0071e3; }
-    @media (max-width: 600px) {
-      .event-card { flex-direction: column; }
-      .event-card-date { flex-direction: row; gap: 0.75rem; min-width: unset; padding: 1rem 1.5rem; justify-content: flex-start; }
-      .event-card-date .day { font-size: 2rem; }
-      .event-card-arrow { display: none; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DCF Events — Roma 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --terra: #d85020;
+  --terra-dark: #b03f15;
+  --sage: #2a8a4a;
+  --amber: #e8c040;
+  --ink: #0e0a06;
+  --ink-soft: #3d3530;
+  --cream: #f5f2e8;
+  --warm-white: #fffdf5;
+  --border: #e6dfd0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', -apple-system, sans-serif;
+  background: var(--warm-white);
+  color: var(--ink);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'ss01', 'ss02';
+}
+
+/* ---------- HEADER ---------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--warm-white);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wordmark {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.wordmark-dot {
+  width: 14px;
+  height: 14px;
+  background: var(--terra);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.wordmark-text {
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
+.lang-toggle {
+  display: flex;
+  background: var(--cream);
+  border-radius: 100px;
+  padding: 4px;
+  gap: 2px;
+}
+
+.lang-toggle button {
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 0.95rem;
+  border-radius: 100px;
+  cursor: pointer;
+  color: var(--ink-soft);
+  transition: all 0.2s;
+}
+
+.lang-toggle button.active {
+  background: var(--ink);
+  color: var(--warm-white);
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  padding: 6rem 2rem 5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  background: var(--cream);
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 2rem;
+}
+
+.hero-kicker-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--terra);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.3); }
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  margin-bottom: 1.25rem;
+  max-width: 16ch;
+}
+
+.hero h1 .accent {
+  color: var(--terra);
+  font-style: italic;
+  font-weight: 700;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  color: var(--ink-soft);
+  font-weight: 400;
+  max-width: 640px;
+  margin-bottom: 3rem;
+  line-height: 1.55;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.hero-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hero-meta-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.hero-meta-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ---------- EVENTS SECTION ---------- */
+.events-section {
+  padding: 4rem 2rem 6rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+
+.section-title .num {
+  color: var(--terra);
+  font-weight: 800;
+}
+
+.section-meta {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ---------- EVENT CARD ---------- */
+.event-card {
+  display: grid;
+  grid-template-columns: 220px 1fr auto;
+  gap: 3rem;
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--border);
+  align-items: center;
+  transition: all 0.3s;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+
+.event-card:last-child { border-bottom: 1px solid var(--border); }
+
+.event-card:hover {
+  background: linear-gradient(to right, transparent 0%, var(--cream) 100%);
+}
+
+.event-card:hover .event-arrow { transform: translateX(8px); }
+.event-card:hover .event-title { color: var(--terra); }
+
+.event-date {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.event-date-month {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 0.5rem;
+}
+
+.event-date-day {
+  font-size: clamp(4rem, 8vw, 6rem);
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+
+.event-date-year {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  margin-top: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.event-content { min-width: 0; }
+
+.event-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sage);
+  background: rgba(42, 138, 74, 0.08);
+  padding: 0.35rem 0.7rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.event-title {
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s;
+}
+
+.event-subtitle {
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  font-weight: 400;
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
+}
+
+.event-details {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.event-details-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.event-details-item svg {
+  width: 16px;
+  height: 16px;
+  color: var(--terra);
+}
+
+.event-arrow {
+  width: 64px;
+  height: 64px;
+  background: var(--ink);
+  color: var(--warm-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+
+/* ---------- CONTEXT BAND ---------- */
+.context-band {
+  background: var(--ink);
+  color: var(--warm-white);
+  padding: 5rem 2rem;
+}
+
+.context-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.context-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 1rem;
+}
+
+.context-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+.context-body {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 253, 245, 0.85);
+  margin-bottom: 2rem;
+}
+
+.context-partners {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 253, 245, 0.2);
+}
+
+.partner-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--warm-white);
+  margin-bottom: 0.25rem;
+}
+
+.partner-role {
+  font-size: 0.75rem;
+  color: rgba(255, 253, 245, 0.6);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ---------- CTA BAND ---------- */
+.cta-band {
+  background: var(--terra);
+  color: var(--warm-white);
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.cta-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cta-title {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+
+.cta-body {
+  font-size: 1.15rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.9;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--ink);
+  color: var(--warm-white);
+  padding: 1.1rem 2.25rem;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  transition: transform 0.2s;
+}
+
+.cta-button:hover { transform: translateY(-2px); }
+
+.cta-button svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s;
+}
+
+.cta-button:hover svg { transform: translateX(4px); }
+
+/* ---------- FOOTER ---------- */
+.footer {
+  background: var(--cream);
+  padding: 3rem 2rem 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-brand {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.75rem;
+  font-size: 0.85rem;
+}
+
+.footer-links a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--terra); }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .hero { padding: 3.5rem 1.5rem 3rem; }
+  .header { padding: 1rem 1.5rem; }
+  .events-section { padding: 2.5rem 1.5rem 4rem; }
+  .event-card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2rem 0;
+  }
+  .event-arrow { display: none; }
+  .context-band, .cta-band { padding: 3.5rem 1.5rem; }
+  .context-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+
+/* ---------- LANGUAGE TOGGLE ---------- */
+[data-lang="it"] .lang-en { display: none; }
+[data-lang="en"] .lang-it { display: none; }
+
+</style>
 </head>
-<body>
-  <nav id="main-nav"></nav>
+<body data-lang="en">
 
-  <section class="events-hero">
-    <div class="eyebrow">DCF Events &nbsp;&middot;&nbsp; Roma 2026</div>
-    <h1>Custodire i Dati, Orientare l&rsquo;Intelligenza</h1>
-    <p class="series-subtitle">Guarding Data, Guiding Intelligence</p>
-    <p class="series-subtitle" style="margin-top:0.25rem;">Sovranit&agrave; digitale, intelligenza artificiale e bene comune &nbsp;&middot;&nbsp; Digital Sovereignty, AI &amp; the Common Good</p>
-    <p class="series-desc">A two-part series of dialogues on faith, technology, and human dignity &mdash; hosted by the Parrocchia di Santa Maria delle Grazie, Rome, in partnership with the Domus Communis Foundation and AURORA International Study Center, in collaboration with the Comitato di Quartiere Antamoro.</p>
-  </section>
+<!-- HEADER -->
+<header class="header">
+  <a href="/" class="wordmark">
+    <div class="wordmark-dot"></div>
+    <div class="wordmark-text">DCF Events</div>
+  </a>
+  <div class="lang-toggle">
+    <button onclick="setLang('en')" class="active" id="btn-en">EN</button>
+    <button onclick="setLang('it')" id="btn-it">IT</button>
+  </div>
+</header>
 
-  <div class="events-listing">
-    <h2>Upcoming Events / Prossimi Incontri</h2>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-kicker">
+    <span class="hero-kicker-dot"></span>
+    <span class="lang-en">Roma · 2026 Series</span>
+    <span class="lang-it">Roma · Serie 2026</span>
+  </div>
 
-    <!-- Event 1 -->
-    <a href="/v3/events/may-7-formare-persona-custodire-dati.html" class="event-card">
-      <div class="event-card-date">
-        <div class="month">May / Mag</div>
-        <div class="day">7</div>
-        <div class="year">2026</div>
+  <h1>
+    <span class="lang-en">Guarding Data,<br>Guiding <span class="accent">Intelligence</span></span>
+    <span class="lang-it">Custodire i Dati,<br>Orientare l'<span class="accent">Intelligenza</span></span>
+  </h1>
+
+  <p class="hero-subtitle">
+    <span class="lang-en">A two-part series of dialogues on faith, technology, and human dignity in the age of artificial intelligence — hosted in Rome.</span>
+    <span class="lang-it">Una serie in due appuntamenti di dialoghi su fede, tecnologia e dignità umana nell'era dell'intelligenza artificiale — a Roma.</span>
+  </p>
+
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">
+        <span class="lang-en">Location</span>
+        <span class="lang-it">Luogo</span>
       </div>
-      <div class="event-card-body">
-        <div class="event-card-part">Part 1 of 2</div>
-        <div class="event-card-title">Formare la Persona, Custodire i Dati</div>
-        <div class="event-card-subtitle">Education, Formation &amp; Responsibility in the Age of AI</div>
-        <div class="event-card-desc">The first meeting opens a unified path of reflection on education, formation, and awareness in an era where data and AI profoundly shape individual and community life.</div>
-        <div class="event-card-meta">
-          <span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
-            Parrocchia di Santa Maria delle Grazie, Roma
-          </span>
-          <span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            18:00 &ndash; 20:00
-          </span>
-        </div>
+      <div class="hero-meta-value">Parrocchia di S. Maria delle Grazie</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">
+        <span class="lang-en">Format</span>
+        <span class="lang-it">Formato</span>
       </div>
-      <div class="event-card-arrow">&rsaquo;</div>
-    </a>
+      <div class="hero-meta-value">
+        <span class="lang-en">2 Sessions</span>
+        <span class="lang-it">2 Incontri</span>
+      </div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">
+        <span class="lang-en">Admission</span>
+        <span class="lang-it">Ingresso</span>
+      </div>
+      <div class="hero-meta-value">
+        <span class="lang-en">Free · Registration Required</span>
+        <span class="lang-it">Gratuito · Registrazione</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Event 2 -->
-    <a href="/v3/events/may-24-ai-human-dignity-communities.html" class="event-card">
-      <div class="event-card-date">
-        <div class="month">May / Mag</div>
-        <div class="day">24</div>
-        <div class="year">2026</div>
-      </div>
-      <div class="event-card-body">
-        <div class="event-card-part">Part 2 of 2</div>
-        <div class="event-card-title">Orientare l&rsquo;Intelligenza, Costruire il Bene Comune</div>
-        <div class="event-card-subtitle">Guiding Intelligence, Building the Common Good</div>
-        <div class="event-card-desc">The second meeting shifts attention to the concrete orientation of technological development and the construction of relationships among communities, territories, and institutions.</div>
-        <div class="event-card-meta">
-          <span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
-            Parrocchia di Santa Maria delle Grazie, Roma
-          </span>
-          <span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            16:00 &ndash; 18:00
-          </span>
-        </div>
-      </div>
-      <div class="event-card-arrow">&rsaquo;</div>
-    </a>
-
-    <div class="series-note">
-      <strong>A connected series.</strong> These two events form a single journey &mdash; from formation and awareness (May 7) to sovereignty and collaboration (May 24). Attending both is encouraged.<br>
-      <span style="color:#86868b;font-style:italic;">Due incontri, un unico percorso &mdash; dalla formazione alla sovranit&agrave; dei dati.</span>
+<!-- EVENTS LISTING -->
+<section class="events-section">
+  <div class="section-head">
+    <h2 class="section-title">
+      <span class="lang-en"><span class="num">02</span> Upcoming Sessions</span>
+      <span class="lang-it"><span class="num">02</span> Prossimi Incontri</span>
+    </h2>
+    <div class="section-meta">
+      <span class="lang-en">May 2026</span>
+      <span class="lang-it">Maggio 2026</span>
     </div>
   </div>
 
-  <footer id="main-footer"></footer>
-  <script src="/v3/js/nav.js"></script>
+  <!-- Event 1 -->
+  <a href="listings/may-7-formare-persona-custodire-dati.html" class="event-card">
+    <div class="event-date">
+      <div class="event-date-month">
+        <span class="lang-en">May</span>
+        <span class="lang-it">Mag</span>
+      </div>
+      <div class="event-date-day">07</div>
+      <div class="event-date-year">2026 · Thursday</div>
+    </div>
+    <div class="event-content">
+      <div class="event-tag">
+        <span class="lang-en">Part 1 of 2</span>
+        <span class="lang-it">Parte 1 di 2</span>
+      </div>
+      <h3 class="event-title">
+        <span class="lang-en">Forming the Person, Guarding the Data</span>
+        <span class="lang-it">Formare la Persona, Custodire i Dati</span>
+      </h3>
+      <p class="event-subtitle">
+        <span class="lang-en">Education, Formation & Responsibility in the Age of AI</span>
+        <span class="lang-it">Educazione, Formazione e Responsabilità nell'Era dell'IA</span>
+      </p>
+      <div class="event-details">
+        <div class="event-details-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>18:00 – 20:00</span>
+        </div>
+        <div class="event-details-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Roma</span>
+        </div>
+      </div>
+    </div>
+    <div class="event-arrow">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="5" y1="12" x2="19" y2="12"/>
+        <polyline points="12 5 19 12 12 19"/>
+      </svg>
+    </div>
+  </a>
+
+  <!-- Event 2 -->
+  <a href="listings/may-24-ai-human-dignity-communities.html" class="event-card">
+    <div class="event-date">
+      <div class="event-date-month">
+        <span class="lang-en">May</span>
+        <span class="lang-it">Mag</span>
+      </div>
+      <div class="event-date-day">24</div>
+      <div class="event-date-year">2026 · Sunday</div>
+    </div>
+    <div class="event-content">
+      <div class="event-tag">
+        <span class="lang-en">Part 2 of 2</span>
+        <span class="lang-it">Parte 2 di 2</span>
+      </div>
+      <h3 class="event-title">
+        <span class="lang-en">Guiding Intelligence, Building the Common Good</span>
+        <span class="lang-it">Orientare l'Intelligenza, Costruire il Bene Comune</span>
+      </h3>
+      <p class="event-subtitle">
+        <span class="lang-en">AI, Human Dignity & Communities</span>
+        <span class="lang-it">IA, Dignità Umana e Comunità</span>
+      </p>
+      <div class="event-details">
+        <div class="event-details-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>16:00 – 18:00</span>
+        </div>
+        <div class="event-details-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Roma</span>
+        </div>
+      </div>
+    </div>
+    <div class="event-arrow">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="5" y1="12" x2="19" y2="12"/>
+        <polyline points="12 5 19 12 12 19"/>
+      </svg>
+    </div>
+  </a>
+</section>
+
+<!-- CONTEXT BAND -->
+<section class="context-band">
+  <div class="context-inner">
+    <div>
+      <div class="context-label">
+        <span class="lang-en">About the Series</span>
+        <span class="lang-it">La Serie</span>
+      </div>
+      <h2 class="context-title">
+        <span class="lang-en">Digital sovereignty, AI & the common good.</span>
+        <span class="lang-it">Sovranità digitale, IA e il bene comune.</span>
+      </h2>
+    </div>
+    <div>
+      <p class="context-body">
+        <span class="lang-en">A two-part series of dialogues on faith, technology, and human dignity — hosted by the Parrocchia di Santa Maria delle Grazie, Rome, in partnership with the Domus Communis Foundation and AURORA International Study Center, in collaboration with the Comitato di Quartiere Antamoro.</span>
+        <span class="lang-it">Una serie in due appuntamenti di dialoghi su fede, tecnologia e dignità umana — ospitata dalla Parrocchia di Santa Maria delle Grazie, Roma, in partenariato con la Domus Communis Foundation e l'AURORA International Study Center, in collaborazione con il Comitato di Quartiere Antamoro.</span>
+      </p>
+      <div class="context-partners">
+        <div>
+          <div class="partner-name">Parrocchia S. Maria delle Grazie</div>
+          <div class="partner-role">
+            <span class="lang-en">Host</span>
+            <span class="lang-it">Ospite</span>
+          </div>
+        </div>
+        <div>
+          <div class="partner-name">Domus Communis Foundation</div>
+          <div class="partner-role">
+            <span class="lang-en">Partner</span>
+            <span class="lang-it">Partner</span>
+          </div>
+        </div>
+        <div>
+          <div class="partner-name">AURORA Int'l Study Center</div>
+          <div class="partner-role">
+            <span class="lang-en">Partner</span>
+            <span class="lang-it">Partner</span>
+          </div>
+        </div>
+        <div>
+          <div class="partner-name">Comitato di Quartiere Antamoro</div>
+          <div class="partner-role">
+            <span class="lang-en">Collaborator</span>
+            <span class="lang-it">Collaboratore</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-inner">
+    <h2 class="cta-title">
+      <span class="lang-en">Reserve your place.</span>
+      <span class="lang-it">Riserva il tuo posto.</span>
+    </h2>
+    <p class="cta-body">
+      <span class="lang-en">Both sessions are free and open to the public. Registration is required.</span>
+      <span class="lang-it">Entrambi gli incontri sono gratuiti e aperti al pubblico. È richiesta la registrazione.</span>
+    </p>
+    <a href="#" class="cta-button">
+      <span class="lang-en">Register now</span>
+      <span class="lang-it">Registrati ora</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="5" y1="12" x2="19" y2="12"/>
+        <polyline points="12 5 19 12 12 19"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">© 2026 DCF Events · Domus Communis Foundation</div>
+    <div class="footer-links">
+      <a href="mailto:events@dcffoundation.org">events@dcffoundation.org</a>
+      <a href="https://dcffoundation.org">DCF Foundation</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function setLang(lang) {
+  document.body.setAttribute('data-lang', lang);
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-it').classList.toggle('active', lang === 'it');
+  document.documentElement.lang = lang;
+}
+</script>
 </body>
 </html>
